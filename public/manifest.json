@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Google Search Console Panel",
+    "version": "1.0.0",
+    "description": "Accédez à vos données Google Search Console depuis un Side Panel moderne",
+    "permissions": [
+        "identity",
+        "sidePanel",
+        "storage"
+    ],
+    "oauth2": {
+        "client_id": "VOTRE_CLIENT_ID.apps.googleusercontent.com",
+        "scopes": [
+            "https://www.googleapis.com/auth/webmasters.readonly"
+        ]
+    },
+    "side_panel": {
+        "default_path": "sidepanel.html"
+    },
+    "action": {
+        "default_title": "Ouvrir Search Console Panel"
+    },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    }
+}
