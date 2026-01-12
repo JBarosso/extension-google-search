@@ -9,9 +9,11 @@
         "storage"
     ],
     "oauth2": {
-        "client_id": "VOTRE_CLIENT_ID.apps.googleusercontent.com",
+        "client_id": "1084041704708-sj53kkmmm1ei2d1k8olblcc7pblb9mfj.apps.googleusercontent.com",
         "scopes": [
-            "https://www.googleapis.com/auth/webmasters.readonly"
+            "https://www.googleapis.com/auth/webmasters.readonly",
+            "https://www.googleapis.com/auth/userinfo.email",
+            "https://www.googleapis.com/auth/userinfo.profile"
         ]
     },
     "side_panel": {
