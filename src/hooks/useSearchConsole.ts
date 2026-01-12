@@ -10,7 +10,7 @@ interface UseSearchConsoleReturn {
     loading: boolean;
     error: string | null;
     fetchSites: (token: string) => Promise<void>;
-    fetchAnalytics: (token: string, siteUrl: string, dateRange: DateRange) => Promise<void>;
+    fetchAnalytics: (token: string, siteUrl: string, dateRange: DateRange, limit?: number) => Promise<void>;
     clearData: () => void;
 }
 
@@ -35,7 +35,7 @@ export function useSearchConsole(): UseSearchConsoleReturn {
         }
     }, []);
 
-    const fetchAnalytics = useCallback(async (token: string, siteUrl: string, dateRange: DateRange) => {
+    const fetchAnalytics = useCallback(async (token: string, siteUrl: string, dateRange: DateRange, limit: number = 1000) => {
         setLoading(true);
         setError(null);
 
@@ -44,7 +44,7 @@ export function useSearchConsole(): UseSearchConsoleReturn {
                 startDate: dateRange.startDate,
                 endDate: dateRange.endDate,
                 dimensions: ['query'],
-                rowLimit: 1000,
+                rowLimit: limit,
             });
             setRows(response.rows || []);
         } catch (err) {

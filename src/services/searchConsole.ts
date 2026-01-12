@@ -61,3 +61,30 @@ export function getDateRange(days: number): { startDate: string; endDate: string
         endDate: formatDate(endDate),
     };
 }
+
+export interface InspectionResponse {
+    inspectionResult: {
+        indexStatusResult: {
+            verdict: string;
+            coverageState: string;
+            indexingState: string;
+            lastCrawlTime?: string;
+        };
+        mobileUsabilityResult?: {
+            verdict: string;
+        };
+    };
+}
+
+export async function inspectUrl(token: string, siteUrl: string, inspectionUrl: string): Promise<InspectionResponse> {
+    const url = `https://searchconsole.googleapis.com/v1/urlInspection/index:inspect`;
+
+    return fetchWithAuth<InspectionResponse>(url, token, {
+        method: 'POST',
+        body: JSON.stringify({
+            inspectionUrl: inspectionUrl,
+            siteUrl: siteUrl,
+            languageCode: "fr-FR"
+        }),
+    });
+}
